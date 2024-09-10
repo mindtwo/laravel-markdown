@@ -10,6 +10,8 @@ class RemoveBoldFromHeadlinesAction
             return null;
         }
 
-        return preg_replace('/(#+\s+(\d+\.\s+)?)(\*\*)([^*]+)(\*\*)/', '$1$4', $markdown);
+        // Use the 's' modifier to allow '.' to match newline characters
+        // Ensure lazy matching of bold content to prevent over-capture
+        return preg_replace('/(#+\s+(\d+\.\s+)?)(\*\*)(.+?)(\*\*)/s', '$1$4', $markdown);
     }
 }
