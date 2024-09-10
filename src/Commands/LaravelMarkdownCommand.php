@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace mindtwo\LaravelMarkdown\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class LaravelMarkdownCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'laravel-markdown';
 
     public $description = 'My command';
 
