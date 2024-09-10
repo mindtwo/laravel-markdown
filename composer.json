@@ -71,11 +71,8 @@
     },
     "extra": {
         "laravel": {
-            "providers": [
-                "mindtwo\\LaravelMarkdown\\LaravelMarkdownServiceProvider"
-            ],
             "aliases": {
-                "LaravelMarkdown": "mindtwo\\LaravelMarkdown\\Facades\\LaravelMarkdown"
+                "CleanupMarkdown": "CleanupMarkdown"
             }
         }
     },

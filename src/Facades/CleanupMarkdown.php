@@ -3,14 +3,15 @@
 namespace mindtwo\LaravelMarkdown\Facades;
 
 use Illuminate\Support\Facades\Facade;
+use mindtwo\LaravelMarkdown\CleanupMarkdown as CleanupMarkdownBase;
 
 /**
- * @see \Mindtwo\LaravelMarkdown\LaravelMarkdown
+ * @see CleanupMarkdown
  */
-class LaravelMarkdown extends Facade
+class CleanupMarkdown extends Facade
 {
     protected static function getFacadeAccessor(): string
     {
-        return \mindtwo\LaravelMarkdown\LaravelMarkdown::class;
+        return CleanupMarkdownBase::class;
     }
 }

@@ -1,19 +1,16 @@
-# This is my package laravel-markdown
+# Laravel Markdown
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/mindtwo/laravel-markdown.svg?style=flat-square)](https://packagist.org/packages/mindtwo/laravel-markdown)
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/mindtwo/laravel-markdown/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/mindtwo/laravel-markdown/actions?query=workflow%3Arun-tests+branch%3Amain)
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/mindtwo/laravel-markdown/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/mindtwo/laravel-markdown/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/mindtwo/laravel-markdown.svg?style=flat-square)](https://packagist.org/packages/mindtwo/laravel-markdown)
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+`laravel-markdown` is a simple, lightweight package for cleaning up and adjusting markdown content in Laravel applications. It provides functionality to remove bold formatting from markdown headlines and dynamically adjust the heading levels in markdown content based on a configurable maximum level. This is especially useful when rendering user-generated content and ensuring consistency in markdown formatting across your application.
 
-## Support us
+## Features
 
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/laravel-markdown.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/laravel-markdown)
-
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
-
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
+- **Remove Bold from Headlines**: Automatically strip bold formatting (e.g., `**Heading**`) from markdown headings.
+- **Adjust Headline Levels**: Dynamically adjust markdown heading levels (e.g., `#` to `##`, `##` to `###`, etc.) based on a configurable maximum level.
 
 ## Installation
 
@@ -23,40 +20,37 @@ You can install the package via composer:
 composer require mindtwo/laravel-markdown
 ```
 
-You can publish and run the migrations with:
-
-```bash
-php artisan vendor:publish --tag="laravel-markdown-migrations"
-php artisan migrate
-```
-
-You can publish the config file with:
-
-```bash
-php artisan vendor:publish --tag="laravel-markdown-config"
-```
-
-This is the contents of the published config file:
-
-```php
-return [
-];
-```
-
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag="laravel-markdown-views"
-```
-
 ## Usage
 
+To clean up your markdown content, you can use the `CleanupMarkdown` class, which handles both removing bold formatting from headlines and adjusting headline levels.
+
+### Example
+
 ```php
-$laravelMarkdown = new Mindtwo\LaravelMarkdown();
-echo $laravelMarkdown->echoPhrase('Hello, Mindtwo!');
+use mindtwo\LaravelMarkdown\CleanupMarkdown;
+
+$markdown = "# **Bold Heading**\n## **Bold Subheading**";
+$cleanedMarkdown = (new CleanupMarkdown())->execute($markdown, 2);
+
+echo $cleanedMarkdown;
+// Outputs:
+// ## Heading
+// ### Subheading
+```
+
+In this example, the maximum headline level is set to `2`, so all `#` headings are adjusted to `##`, and bold formatting is removed from both headings.
+
+## Customization
+
+You can specify the maximum headline level when calling the `execute` method. This determines how the headline levels will be adjusted:
+
+```php
+$cleanedMarkdown = (new CleanupMarkdown())->execute($markdown, 3); // Max headline level is 3
 ```
 
 ## Testing
+
+To run the package's tests, use:
 
 ```bash
 composer test
@@ -68,11 +62,11 @@ Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed re
 
 ## Contributing
 
-Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
+Contributions are welcome! Please see [CONTRIBUTING](CONTRIBUTING.md) for details on how to contribute.
 
 ## Security Vulnerabilities
 
-Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
+If you discover any security-related issues, please review [our security policy](../../security/policy) for how to report them.
 
 ## Credits
 
