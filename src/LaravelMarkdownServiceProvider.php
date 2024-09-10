@@ -2,9 +2,9 @@
 
 namespace mindtwo\LaravelMarkdown;
 
+use Mindtwo\LaravelMarkdown\Commands\LaravelMarkdownCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Mindtwo\LaravelMarkdown\Commands\LaravelMarkdownCommand;
 
 class LaravelMarkdownServiceProvider extends PackageServiceProvider
 {
